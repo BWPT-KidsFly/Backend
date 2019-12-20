@@ -1,0 +1,39 @@
+{
+  "name": "Backend",
+  "version": "1.0.0",
+  "description": "- [Dummy Data](#dummy-data)      \r - [Auth Routes](#auth-routes)\r   * [Register](#register)    \r   * [Login](#login)    \r - [User Routes](#user-routes)\r   * [Get Users](#get-users)    \r   * [Get User](#get-user)\r   * [Get Trips by User ID](#get-trips-by-user-id)\r   * [Delete User](#delete-user)\r   * [Update User](#update-user)\r - [Trip Routes](#trip-routes)\r   * [Create Trip](#create-trip)    \r   * [Get Trip](#get-trip)    \r   * [Get Trip](#get-trip-1)    \r   * [Update Trip](#update-trip)    \r   * [Delete Trip](#delete-trip)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "knex:init": "knex init",
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BWPT-KidsFly/Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BWPT-KidsFly/Backend/issues"
+  },
+  "homepage": "https://github.com/BWPT-KidsFly/Backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-sessions": "^1.0.6",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.4",
+    "morgan": "^1.9.1",
+    "pg": "^7.15.1",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  }
+}
