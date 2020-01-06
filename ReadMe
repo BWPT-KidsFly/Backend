@@ -13,6 +13,7 @@ Takes an object including:
     address: 
     home airport: 
     phone number : 
+
 }
 ```
 
@@ -29,7 +30,6 @@ Takes an object including:
     password: 
 }
 ```
-
 
 ### Register New Admin
 
@@ -49,6 +49,7 @@ Takes an object including:
 
 POST to `HEROKU LINK HERE/api/auth/login/admin`
 
+
 Takes an object including:
 ```javascript
 {
@@ -58,12 +59,12 @@ Takes an object including:
 ```
 
 
-
 ### Post a new trip
 
 POST to `HEROKU LINK HERE/trips`
 
 Takes a JWT and an object including: 
+
 
 ```javascript
 {
@@ -72,23 +73,8 @@ Takes a JWT and an object including:
 	flight number: 
 	departure time: 
 	carryon items: 
- number of children:
+  number of children:
 
-}
-```
-
-NEW NEW NEW NEW NEW NEW
-
-You will be returned the newly created food object including:
-```javascript
-{
-    name: "New Food Item",
-    time: "113033",
-    description: "Wow look at this food to be donated",
-    is_claimed: “0", //0 if false, 1 if true",
-    pickup_date: “01/01/2019“,
-    business_id: 7, //automatically assigned according to provided JWT
-    volunteer_id: null //will be assigned when claimed by a volunteer
 }
 ```
 
@@ -100,24 +86,26 @@ Takes a JWT and an object containing any of the existing trip properties that ar
 
 ### Delete food item
 
-DELETE to `HEROKU LINK HERE/api/trip/:id` //where id is food's ID
+DELETE to `HEROKU LINK HERE/api/trip/:id` //where id is trip's ID
 
 Takes a JWT
 
 
 ### Get all trips items in database
 
-GET to `HEROKU LINK HERE/api/trip`
+GET to `HEROKU LINK HERE/api/trip/`
 
-Requires JWT
 
 Will be returned an array with trip objects.
 
-### Get all food items owned by logged in business
+### Submitting an application
 
-GET to `https://bw-replate.herokuapp.com/api/food/business`
+POST to `HEROKU LINK HERE /api/applications/apps`
 
-Requires JWT
-
-Will be returned an array with food objects.
+```javascript
+{
+    email:
+    password:
+}
+```
 
