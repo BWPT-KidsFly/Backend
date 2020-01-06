@@ -1,568 +1,108 @@
-# Virtual Reality Funding Platform
+# BW -Kids-Fly
 
-## Table of Contents
+### Register New User
 
-- [Dummy Data](#dummy-data)      
-- [Auth Routes](#auth-routes)
-  * [Register](#register)    
-  * [Login](#login)    
-- [User Routes](#user-routes)
-  * [Get Users](#get-users)    
-  * [Get User](#get-user)
-  * [Get Trips by User ID](#get-trips-by-user-id)
-  * [Delete User](#delete-user)
-  * [Update User](#update-user)
-- [Trip Routes](#trip-routes)
-  * [Create Trip](#create-trip)    
-  * [Get Trip](#get-trip)    
-  * [Get Trip](#get-trip-1)    
-  * [Update Trip](#update-trip)    
-  * [Delete Trip](#delete-trip)
-    
+POST to `HEROKU LINK HERE/api/auth/register/user`
 
-## API Documentation
-
-### Dummy Data
-
-#### Test users with projects
-
-```
-Users: [
-  {
-    "id": 1,
-    "username": "admin",
-    "password": "password"
-    "name": "Heather, Jashele, Megan, Yara, Asha, Kayla and Katie",
-    "about": "We are a team of vacationers",
-    "trips": [
-      {
-        "id": 1, 
-        "tripName": "Girls Trip",
-        "tripType": "Leisure",
-        "description": "We need to just get away and have some fun!",
-        "fundingAmount": 5000.00,
-        "user_id": 1, 
-      }
-    ]
-  },
-  {
-    "id": 2, 
-    "username": "admin2",
-    "password": "password",
-    "name": "Micah"
-    "about": "Professional full stack developer, traveling the world, getting answers to problems. ",
-    "trips": [
-      {
-        "id": 2, 
-        "tripName": "Micah's World",
-        "tripType": "Web Development",
-        "description": "Traveling to Europe for business",
-        "fundingAmount": 15000.00,
-        "user_id": 2,
-      },
-    ]
-  },
-  {
-    "id": 3, 
-    "username": "admin3",
-    "password": "password",
-    "name": "Mikayla and Zachary",
-    "about": "Anti-Bullying Project. ",
-    "trips": [
-      {
-        "id": 3, 
-        "tripName": "Chicago HS Trip",
-        "tripType": "Speech",
-        "description": "Going to speak with the students about how to be an anti-bully ally. ",
-        "fundingAmount": 10000.00,
-        "user_id": 3,
-      },
-    ]
-  }
-]
-```
-
-# Auth Routes
-| Table | Method |       Endpoint |                      Description |
-| ----- | :----: | -------------: | -------------------------------: |
-| users |  POST  | /auth/register |            Registers a new user. |
-| users |  POST  | /auth/login    | Logs in already registered user. |
-
-## Register
-
-### Registers a new user.
-
-_Method URL:_ `/auth/register`
-
-_HTTP Method:_ **[POST]**
-
-#### Request Body 
-| Name            |  Type  | Required |     Description |
-| ---------       | :----: | -------: | --------------: |
-| `username`      | String |      Yes | Must be unique. |
-| `password`      | String |      Yes |                 |
-| `name`          | String |      Yes |                 |
-| `address`       | Text   |      Yes |                 |
-| `home airport`  |        |      Yes | Drop down menu  |
-| `phone number`  | String |      Yes |                 |
-
-
-#### Examples
-
-```
+Takes an object including:
+```javascript 
 {
-  "username": "vrproject",
-  "password": "ilovemoney",
-  "name": "John",
-  "about": "Tech developer"
-}
-
-```
-
-#### Response
-
-##### 201 (Created)
-
-> If you successfully register a user, the endpoint will return an HTTP response with a status code `201`.
-
-##### 400 (Bad Request)
-
-> If you are missing a username or password, the endpoint will return an HTTP response with a status code of `400`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Login
-
-### Logs in an already registered user.
-
-_Method URL:_ `/auth/login`
-
-_HTTP Method:_ **[POST]**
-
-#### Request Body
-
-| Name       |  Type  |                                                Description |
-| ---------- | :----: | ---------------------------------------------------------: |
-| `username` | String |                           Must match username in database. |
-| `password` | String | Must match password to corresponding username in database. |
-
-#### Example
-
-```
-{
-  "username": "vrproject",
-  "password": "ilovemoney"
+    username:
+    password: 
+    full name:
+    address: 
+    home airport: 
+    phone number: 
 }
 ```
 
-#### Response
 
-```
+### Login Existing User
+
+POST to `HEROKU LINK HERE/api/auth/login/user`
+
+Takes an object including:
+```javascript
 {
-  "name": "John",
-  "about": "Tech developer"
-}
-
-##### 200 (OK)
-
-> If you successfully log in, the endpoint will return an HTTP response with a status code `200`.
-
-##### 400 (Bad Request)
-
-> If you are missing a username or a password, the endpoint will return an HTTP response with a status code of `400`.
-
-##### 401 (Unauthorized)
-
-> If you provide invalid credentials, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-# User Routes
-
-## Get Users
-
-### Gets a list of users.
-
-_Method URL:_ `/users/`
-
-_HTTP Method:_ **[GET]**
-
-#### Headers
-
-| Name            |  Type  | Required |              Description |
-| --------------- | :----: | -------: | -----------------------: |
-| `Content-Type`  | String |      Yes | Must be application/JSON |
-| `Authorization` | String |      Yes |           JSON Web Token |
-
-#### Response
-
-##### 200 (OK)
-
-> If users are found, the endpoint will return an HTTP response with a status code `200`.
-
-##### 404 (Not Found)
-
-> If users are not found, the endpoint will return an HTTP response with a status code `404`.
-
-##### 401 (Unauthorized)
-
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Get User
-
-### Gets user by ID.
-
-_Method URL:_ `/users/:id`
-
-_HTTP Method:_ **[GET]**
-
-#### Return
-
-
-
-#### Response
-
-##### 200 (OK)
-
-> If user with specified ID is found, the endpoint will return an HTTP response with a status code `200`.
-
-##### 404 (Not Found)
-
-> If user with specified ID is not found, the endpoint will return an HTTP response with a status code `404`.
-
-##### 401 (Unauthorized)
-
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Get Projects by User ID
-
-### Gets all projects for specified user.
-
-_Method URL:_ `/users/:id/projects`
-
-_HTTP Method:_ **[GET]**
-
-#### Headers
-
-| Name            |  Type  | Required |              Description |
-| --------------- | :----: | -------: | -----------------------: |
-| `Content-Type`  | String |      Yes | Must be application/JSON |
-| `Authorization` | String |      Yes |           JSON Web Token |
-
-#### Response
-
-##### 200 (OK)
-
-> If user with specified ID is found, the endpoint will return an HTTP response with a status code `200`.
-
-##### 404 (Not Found)
-
-> If user with specified ID is not found, the endpoint will return an HTTP response with a status code `404`.
-
-##### 401 (Unauthorized)
-
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Delete User
-
-### Deletes user by ID.
-
-_Method URL:_ `/users/:id`
-
-_HTTP Method:_ **[DELETE]**
-
-#### Headers
-
-| Name            |  Type  | Required |              Description |
-| --------------- | :----: | -------: | -----------------------: |
-| `Content-Type`  | String |      Yes | Must be application/JSON |
-| `Authorization` | String |      Yes |           JSON Web Token |
-
-#### Response
-
-##### 200 (OK)
-
-> If user with specified ID is found and deleted, the endpoint will return an HTTP response with a status code `200`.
-
-##### 404 (Not Found)
-
-> If user with specified ID is not found, the endpoint will return an HTTP response with a status code `404`.
-
-##### 401 (Unauthorized)
-
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Update User
-
-### Updates user by ID.
-
-_Method URL:_ `/users/:id`
-
-_HTTP Method:_ **[PUT]**
-
-#### Headers
-
-| Name            |  Type  | Required |              Description |
-| --------------- | :----: | -------: | -----------------------: |
-| `Content-Type`  | String |      Yes | Must be application/JSON |
-| `Authorization` | String |      Yes |           JSON Web Token |
-
-#### Body
-
-| Name            |  Type  | Required |     Description |
-| ---------       | :----: | -------: | --------------: |
-| `username`      | String |      Yes | Must be unique. |
-| `password`      | String |      Yes |                 |
-| `name`          | String |      Yes |                 |
-| `address`       | Text   |      Yes |                 |
-| `home airport`  |        |      Yes | Drop down menu  |
-| `phone number`  | String |      Yes |                 |
-
-#### Example
-
-```
-{
-  "username": "vrproject",
-  "password": "ilovemoney",
-  "name": "John",
-  "address": "123 MyLane",
-  "home airport": "LAX",
-  "phone number": "1234567890",
+    username: 
+    password: 
 }
 ```
 
-#### Response
 
-##### 200 (OK)
+### Register New Admin
 
-> If user with specified ID is found and updated, the endpoint will return an HTTP response with a status code `200`.
+POST to `HEROKU LINK HERE/api/auth/register/admin`
 
-##### 404 (Not Found)
-
-> If user with specified ID is not found, the endpoint will return an HTTP response with a status code `404`.
-
-##### 401 (Unauthorized)
-
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-# Project Routes
-
-## Create Project
-
-### Creates a project, with a project type, description, funding amount, and user id.
-
-_Method URL:_ `/projects`
-
-_HTTP Method:_ **[POST]**
-
-#### Headers
-
-| Name            |  Type  | Required |              Description |
-| --------------- | :----: | -------: | -----------------------: |
-| `Content-Type`  | String |      Yes | Must be application/JSON |
-| `Authorization` | String |      Yes |           JSON Web Token |
-
-#### Body
-
-| Name             |  Type   | Required | Description |
-| ---------------- | :-----: | -------: | ----------: |
-| `tripName`    | String  |      Yes |             |
-| `tripType`    | String  |      Yes |             |
-| `description`    | String  |      Yes |             |
-| `fundingAmount`  | Decimal |      Yes |             |
-| `user_id`        | Integer |      Yes |             |
-
-#### Example
-
-```
+Takes an object including:
+```javascript 
 {
-  "tripName": "Test project 1",
-  "tripType": "Tech",
-  "description": "Small tech business test project 1",
-  "fundingAmount": 5000.00,
-  "user_id": 1, 
+    username: 
+    password: 
+   
 }
 ```
 
-#### Response
 
-##### 201 (Created)
+### Login Existing Admin
 
-> If project is created, the endpoint will return an HTTP response with a status code `201`.
+POST to `HEROKU LINK HERE/api/auth/login/admin`
 
-##### 400 (Bad Request)
-
-> If you are missing any project information, the endpoint will return an HTTP response with a status code of `400`.
-
-##### 401 (Unauthorized)
-
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Get Projects
-
-### Gets a list of projects.
-
-_Method URL:_ `/projects`
-
-_HTTP Method:_ **[GET]**
-
-#### Headers
-
-No headers needed. `/projects` is not a protected path.
-
-#### Response
-
-##### 200 (OK)
-
-> If projects are found, the endpoint will return an HTTP response with a status code `200`.
-
-##### 404 (Not Found)
-
-> If projects are not found, the endpoint will return an HTTP response with a status code `404`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Get Projects
-
-### Gets project by ID.
-
-_Method URL:_ `/projects/:id`
-
-_HTTP Method:_ **[GET]**
-
-#### Headers
-
-No headers needed. `/projects/:id` is not a protected path.
-
-#### Response
-
-##### 200 (OK)
-
-> If project with specified ID is found, the endpoint will return an HTTP response with a status code `200`.
-
-##### 404 (Not Found)
-
-> If project with specified ID is not found, the endpoint will return an HTTP response with a status code `404`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
-
-## Update Project
-
-### Updates project by ID.
-
-_Method URL:_ `/projects/:id`
-
-_HTTP Method:_ **[PUT]**
-
-#### Headers
-
-| Name            |  Type  | Required |              Description |
-| --------------- | :----: | -------: | -----------------------: |
-| `Content-Type`  | String |      Yes | Must be application/JSON |
-| `Authorization` | String |      Yes |           JSON Web Token |
-
-#### Body
-
-| Name             |  Type   | Required | Description |
-| ---------------- | :-----: | -------: | ----------: |
-| `tripName`       | String  |      Yes |             |
-| `tripType`       | String  |      Yes |             |
-| `description`    | String  |      Yes |             |
-| `fundingAmount`  | Decimal |      Yes |             |
-| `user_id`        | Integer |      Yes |             |
-
-#### Example
-
-```
+Takes an object including:
+```javascript
 {
-  "tripName": "Test project 1",
-  "tripType": "Tech",
-  "description": "Small tech business test project 1",
-  "fundingAmount": 5000.00,
-  "user_id": 1, 
+    username: 
+    password:
 }
 ```
 
-#### Response
 
-##### 200 (OK)
+### Post a new trip
 
-> If project with specified ID is found and updated, the endpoint will return an HTTP response with a status code `200`.
+POST to `HEROKU LINK HERE /api/trips/trip`
 
-##### 404 (Not Found)
+Takes a JWT and an object including: 
 
-> If project with specified ID is not found and updated, the endpoint will return an HTTP response with a status code `404`.
+```javascript
+{
+	airport name: 
+	airline: 
+	flight number: 
+	departure time: 
+	carryon items: 
+    number of children:
 
-##### 401 (Unauthorized)
+}
+```
 
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
+### Update trip
 
-##### 500 (Internal Service Error)
+PUT to `HEROKU LINK HERE/api/trip/:id` //where id is trip's ID
 
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
+Takes a JWT and an object containing any of the existing trip properties that are to be updated.
 
-## Delete Project
+### Delete food item
 
-### Deletes project by ID.
+DELETE to `HEROKU LINK HERE/api/trip/:id` //where id is trip's ID
 
-_Method URL:_ `/projects/:id`
+Takes a JWT
 
-_HTTP Method:_ **[DELETE]**
 
-#### Headers
+### Get all trips items in database
 
-| Name            |  Type  | Required |              Description |
-| --------------- | :----: | -------: | -----------------------: |
-| `Content-Type`  | String |      Yes | Must be application/JSON |
-| `Authorization` | String |      Yes |           JSON Web Token |
+GET to `HEROKU LINK HERE/api/trip/`
 
-#### Response
 
-##### 200 (OK)
+Will be returned an array with trip objects.
 
-> If project with specified ID is found and deleted, the endpoint will return an HTTP response with a status code `200`.
+### Submitting an application
 
-##### 404 (Not Found)
+POST to `HEROKU LINK HERE /api/applications/apps`
 
-> If project with specified ID is not found and deleted, the endpoint will return an HTTP response with a status code `404`.
-
-##### 401 (Unauthorized)
-
-> If user does not have access, the endpoint will return an HTTP response with a status code of `401`.
-
-##### 500 (Internal Service Error)
-
-> If there is a server or database error, the endpoint will return an HTTP response with a status code of `500`.
+```javascript
+{
+    email:
+    password:
+}
+```
 

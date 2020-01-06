@@ -10,36 +10,36 @@ module.exports = {
 };
 
 function find() {
-  return db('users').select('id', 'username', 'password');
+  return db('admins').select('id', 'username', 'password');
 }
 
 function findBy(filter) {
-  return db('users').where(filter);
+  return db('admins').where(filter);
 }
 
-async function add(user) {
-  const [id] = await db('users').insert(user);
+async function add(admin) {
+  const [id] = await db('admins').insert(admin);
 
   return findById(id);
 }
 
 function findById(id) {
-  return db('users')
+  return db('admins')
     .where({ id })
     .first();
 }
 
 function update (changes, id) {
-  return db("users").where({ id })
-  .update(users)
+  return db("schemes").where({ id })
+  .update(changes)
   .then(res => {
-      return db ("susers").where({ id });
+      return db ("schemes").where({ id });
   });
 }
 
 function remove(id) {
-  return db ("users").where({ id })
-  ? db("users")
+  return db ("schemes").where({ id })
+  ? db("schemes")
   .where({ id })
   .del()
   : null;

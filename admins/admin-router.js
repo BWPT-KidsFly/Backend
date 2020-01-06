@@ -1,26 +1,28 @@
 const router = require('express').Router();
 
-const Users = require(`../users/user-model`);
+const Admins = require(`../admins/admin-model`);
+
 const restricted = require(`../auth/auth-restricted-middleware`);
 
+const checkRole = require(`../auth/check-role-middleware`);
+
 //GET THE LIST
-router.get('/', restricted, (req, res) => {
-    Users.find()
-    .then(users => {
-      res.json(users);
+router.get('/', restricted, checkRole, (req, res) => {
+    Admins.find()
+    .then(admins => {
+      res.json(admins);
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to get users' });
     });
   });
 
-
 //UPDATE
   router.put('/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
   
-    users.update(changes, id)
+    admins.update(changes, id)
     .then(count => {
       if (count) {
         res.json({ update: count });
@@ -38,7 +40,7 @@ router.get('/', restricted, (req, res) => {
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
   
-    users.remove(id)
+    admins.remove(id)
     .then(count => {
       if (count) {
         res.json({ removed: count });

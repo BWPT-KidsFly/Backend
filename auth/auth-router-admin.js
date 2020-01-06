@@ -3,18 +3,18 @@ const bcrypt = require(`bcryptjs`);
 const jwt = require (`jsonwebtoken`);
 const secrets = require (`../config/secrets`);
 
-const Users = require (`../users/user-model`);
-
+const Admins = require (`../admins/admin-model`);
 
 //CREATE
 
-router.post(`/register/user`, (req, res) => {
-    let user = req.body;
-    const hash = bcrypt.hashSync(user.password, 10);
-    user.password = hash;
+router.post(`/register/admin`, (req, res) => {
+    let admin = req.body;
+    // console.log(req)
+    const hash = bcrypt.hashSync(admin.password, 10);
+    admin.password = hash;
     
 
-    Users.add(user)
+    Admins.add(admin)
     .then(saved => {
         res.status(201).json(saved);
     })
@@ -24,16 +24,16 @@ router.post(`/register/user`, (req, res) => {
     });
 });
 
-router.post(`/login/user`, (req, res) => {
+router.post(`/login/admin`, (req, res) => {
     let{username, password } = req.body;
 
-    Users.findBy({ username })
+    Admins.findBy({ username })
     .first()
-    .then(user => {
-        if (user && bcrypt.compareSync(password, user.password)) {
+    .then(admin => {
+        if (admin && bcrypt.compareSync(password, admin.password)) {
 
-            let token = genToken(user);
-            res.status(200).json({ message: `Welcome ${user.username}!`,
+            let token = genToken(admin);
+            res.status(200).json({ message: `Welcome ${admin.username}!`,
         token: token
     });
         } else {
@@ -45,11 +45,11 @@ router.post(`/login/user`, (req, res) => {
     });
 });
 
-function genToken(user) {
+function genToken(admin) {
     const payload = {
-        userid: user.id,
-        username:user.username,
-        roles: "user"
+        adminid: admin.id,
+        username:admin.username,
+        roles: "admin"
     };
     const options = {
         expiresIn: `1d`

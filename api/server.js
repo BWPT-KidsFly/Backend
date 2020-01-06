@@ -2,14 +2,19 @@ const express = require(`express`);
 const morgan = require (`morgan`);
 const helmet = require(`helmet`);
 const cors = require(`cors`);
+const apiRouter = require (`../api/api-router`);
+const db = require (`../database/dbConfig`)
 
 const server = express();
 
 server.use(morgan("dev"));
 server.use(helmet());
 server.use(cors());
+server.use(express.json());
+server.use(`/api`, apiRouter);
 
 server.get('/', (req, res) => {
+  console.log(req.body)
     // get all users from the database
     db('users')
     .then(users => {
@@ -20,17 +25,5 @@ server.get('/', (req, res) => {
     });
   });
 
-//CREATING A NEW TRIP
-  server.post('/trip', (req, res) => {
-    const accountData = req.body;
-
-    db('accounts').insert(accountData)
-        .then(accountId => {
-            res.status(201).json({ message: 'Congratulations, you successfully created a new trip!', accountID: accountId });
-        })
-        .catch(err => {
-            res.status(500).json({ message: 'Whoops! Something went wrong :( ' });
-        });
-});
 
   module.exports = server;

@@ -2,15 +2,46 @@ const router = require('express').Router();
 
 const trips = require(`./trip-model`);
 
-router.get('/', restricted, (req, res) => {
+const db = require(`../database/dbConfig`);
+
+//GET ALL TRIPS
+router.get('/', (req, res) => {
     trips.find()
     .then(trips => {
       res.json(trips);
     })
     .catch (err => {
-      res.status(500).json({ message: 'Failed to get users' });
+      console.log(err)
+      res.status(500).json({ message: 'Failed to get your list of trips' });
     });
   });
+
+
+//CREATING A NEW TRIP
+router.post('/trip', (req, res) => {
+  const tripData = req.body;
+
+  db('trips').insert(tripData)
+      .then(accountId => {
+          res.status(201).json({ message: 'Congratulations, you successfully created a new trip!', accountID: accountId });
+      })
+      .catch(err => {
+          res.status(500).json({ message: 'Whoops! Something went wrong :( ' });
+      });
+});
+
+
+  // router.post(`/`, (req, res) => {
+  //   const tripData = req.body;
+
+  //   trips.add(tripData)
+  //   .then(trip => {
+  //     res.status(201).json(trip);
+  //   })
+  //   .catch (err => {
+  //     res.status(500).json ({ message: `Sorry, failed to create a new trip at this time`});
+  //   });
+  // });
 
 
 
@@ -24,11 +55,12 @@ router.get('/', restricted, (req, res) => {
       if (count) {
         res.json({ update: count });
       } else {
-        res.status(404).json({ message: 'Could not find user with given id' });
+        res.status(404).json({ message: 'Could not find trip with given id' });
       }
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to update user' });
+      console.log(err)
+      res.status(500).json({ message: 'Failed to update trip' });
     });
   });
 
@@ -42,10 +74,12 @@ router.delete('/:id', (req, res) => {
       if (count) {
         res.json({ removed: count });
       } else {
-        res.status(404).json({ message: 'Could not find user with given id' });
+        res.status(404).json({ message: 'Could not find trip with given id' });
       }
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to delete user' });
+      res.status(500).json({ message: 'Failed to delete trip' });
     });
   });
+
+  module.exports = router;
