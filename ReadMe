@@ -12,9 +12,11 @@ Takes an object including:
     full name:
     address: 
     home airport: 
-    phone number: 
+    phone number : 
+
 }
 ```
+
 
 
 ### Login Existing User
@@ -28,7 +30,6 @@ Takes an object including:
     password: 
 }
 ```
-
 
 ### Register New Admin
 
@@ -48,6 +49,7 @@ Takes an object including:
 
 POST to `HEROKU LINK HERE/api/auth/login/admin`
 
+
 Takes an object including:
 ```javascript
 {
@@ -59,9 +61,10 @@ Takes an object including:
 
 ### Post a new trip
 
-POST to `HEROKU LINK HERE /api/trips/trip`
+POST to `HEROKU LINK HERE/trips`
 
 Takes a JWT and an object including: 
+
 
 ```javascript
 {
@@ -70,7 +73,7 @@ Takes a JWT and an object including:
 	flight number: 
 	departure time: 
 	carryon items: 
-    number of children:
+  number of children:
 
 }
 ```
