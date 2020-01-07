@@ -30,16 +30,16 @@ function findById(id) {
 }
 
 function update (changes, id) {
-  return db("schemes").where({ id })
+  return db("admins").where({ id })
   .update(changes)
   .then(res => {
-      return db ("schemes").where({ id });
+      return db ("admins").where({ id });
   });
 }
 
 function remove(id) {
-  return db ("schemes").where({ id })
-  ? db("schemes")
+  return db ("admins").where({ id })
+  ? db("admins")
   .where({ id })
   .del()
   : null;
