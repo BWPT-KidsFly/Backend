@@ -6,15 +6,16 @@ const Apps = require (`../applications/applications_model`);
 
 //CREATE
 
-router.post(`/apps`, (req, res) => {
+router.post(`/`, (req, res) => {
     let app = req.body;
+    console.log(req.body)
     const hash = bcrypt.hashSync(app.password, 10);
     app.password = hash;
     
 
     Apps.add(app)
     .then(saved => {
-        res.status(201).json(saved);
+        res.status(201).json({ message: `You have now applied to be a KidsFlyConnection Staff Member!`});
     })
     .catch(error => {
         console.log(error)

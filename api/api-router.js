@@ -6,7 +6,7 @@ const usersRouter = require (`../users/user-router`);
 const tripsRouter = require (`../trips/trip-router`);
 const adminRouter = require (`../admins/admin-router`);
 const appRouter = require (`../applications/applications_router`);
-const appsRouter = require (`../auth/apps-router`);
+const authappsRouter = require (`../auth/auth-apps-router`);
 
 
 router.use (`/auth`, authRouter);
@@ -21,7 +21,7 @@ router.use (`/admin`, adminRouter);
 
 router.use (`/applications`, appRouter);
 
-router.use (`/apps`, appsRouter);
+router.use (`/apps`, authappsRouter);
 
 
 

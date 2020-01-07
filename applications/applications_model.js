@@ -17,7 +17,7 @@ function findBy(filter) {
 }
 
 async function add(application) {
-  const [id] = await db('application').insert(admin);
+  const [id] = await db('application').insert(application);
 
   return findById(id);
 }
