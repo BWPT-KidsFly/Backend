@@ -2,110 +2,185 @@
 
 ### Register New User
 
-POST to `HEROKU LINK HERE/api/auth/register/user`
+POST to `https://bw-kids-fly.herokuapp.com/api/auth/register/user`
 
 Takes an object including:
 ```javascript 
 {
-    username:
-    password: 
-    full name:
-    address: 
-    home airport: 
-    phone number : 
-
+    "username": "LambdaStudent247",
+    "password": "password",
+    "first name": "Heather",
+    "last name": "Ridgill",
+    "street address": "123 Lambda Court",
+    "city": "LambdaVille",
+    "state": "CA",
+    "zip": "92831",
+    "phone number": "555-555-5555",
+    "home airport": "LAX"
 }
 ```
+
+Example Output:
+
+{
+    "id": 1,
+    "username": "LambdaStudent247",
+    "password": "$2a$10$6NrOGH/43.iC.t8gndaGV.N3ZNRnaaoln44K.urxOCsgmdwp67EeK",
+    "first name": "Heather",
+    "last name": "Ridgill",
+    "street address": "123 Lambda Court",
+    "city": "LambdaVille",
+    "state": "CA",
+    "zip": "92831",
+    "phone number": "555-555-5555",
+    "home airport": "LAX",
+    "admin": 0
+}
 
 
 
 ### Login Existing User
 
-POST to `HEROKU LINK HERE/api/auth/login/user`
+POST to `https://bw-kids-fly.herokuapp.com/api/auth/login/user`
 
 Takes an object including:
 ```javascript
 {
-    username: 
-    password: 
+   "username": "LambdaStudent247",
+    "password": "password"
 }
 ```
 
+Example Output:
+
+{
+    "message": "Welcome LambdaStudent247!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiTGFtYmRhU3R1ZGVudDI0NyIsInJvbGVzIjoidXNlciIsImlhdCI6MTU3ODM3MTE5NCwiZXhwIjoxNTc4NDU3NTk0fQ.N1XJpSGk2n33FdnMGaLn4TGf-P2C8XS6II8G_KqyWJc"
+}
+
+
 ### Register New Admin
 
-POST to `HEROKU LINK HERE/api/auth/register/admin`
+POST to `https://bw-kids-fly.herokuapp.com/api/adminauth/register/admin`
 
 Takes an object including:
 ```javascript 
 {
-    username: 
-    password: 
+    "username": "LambdaStudent5000",
+    "password": "password"
    
 }
 ```
 
+Example Output:
+
+{
+    "id": 1,
+    "username": "LambdaStudent5000",
+    "password": "$2a$10$X58bC9c2vZxnG6mgvf16uexgaaiyIDcyxRwLEw/34G54DF8r3mCaK"
+}
 
 ### Login Existing Admin
 
-POST to `HEROKU LINK HERE/api/auth/login/admin`
-
+POST to `https://bw-kids-fly.herokuapp.com/api/adminauth/login/admin`
 
 Takes an object including:
 ```javascript
 {
-    username: 
-    password:
+  "username": "LambdaStudent5000",
+  "password": "password"
 }
 ```
 
+Example Output:
+
+{
+    "message": "Welcome admin LambdaStudent5000!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbmlkIjoxLCJ1c2VybmFtZSI6IkxhbWJkYVN0dWRlbnQ1MDAwIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTU3ODM3MTQwMywiZXhwIjoxNTc4NDU3ODAzfQ.BLegBiUvih24THUB7LgzEFOnErW69vNXpfrMo9xfn50"
+}
+
+
+
+### Get all registered users
+
+GET to `https://bw-kids-fly.herokuapp.com/api/user/`
+
+Takes an object including:
+```javascript
+[
+    {
+        "id": 1,
+        "username": "LambdaStudent247",
+        "password": "$2a$10$6NrOGH/43.iC.t8gndaGV.N3ZNRnaaoln44K.urxOCsgmdwp67EeK"
+    },
+    {
+        "id": 2,
+        "username": "LambdaStudent247",
+        "password": "$2a$10$65ZgEq5rUvjcw4WDfZsei.OysphHJWS/0VpSCvbgey5MI8qCyWWce"
+    }
+]
+```
 
 ### Post a new trip
 
-POST to `HEROKU LINK HERE/trips`
+POST to `https://bw-kids-fly.herokuapp.com/api/trips/trip`
 
 Takes a JWT and an object including: 
 
-
 ```javascript
 {
-	airport name: 
-	airline: 
-	flight number: 
-	departure time: 
-	carryon items: 
-  number of children:
-
+"airport name": "SFO",
+"airline": "1255",
+"flight number": "25",
+"departure time": "12PM",
+"carryon": "3",
+"children": "10"
 }
 ```
 
+Example Output:
+
+{
+    "message": "Congratulations, you successfully created a new trip!",
+    "accountID": [
+        1
+    ]
+}
+
 ### Update trip
 
-PUT to `HEROKU LINK HERE/api/trip/:id` //where id is trip's ID
+PUT to `https://bw-kids-fly.herokuapp.com/api/trip/:id` //where id is trip's ID
 
 Takes a JWT and an object containing any of the existing trip properties that are to be updated.
 
-### Delete food item
+### Delete a trip
 
-DELETE to `HEROKU LINK HERE/api/trip/:id` //where id is trip's ID
+DELETE to `https://bw-kids-fly.herokuapp.com/api/trip/:id` //where id is trip's ID
 
 Takes a JWT
 
-
 ### Get all trips items in database
 
-GET to `HEROKU LINK HERE/api/trip/`
+GET to `https://bw-kids-fly.herokuapp.com/api/trip/`
 
 
 Will be returned an array with trip objects.
 
 ### Submitting an application
 
-POST to `HEROKU LINK HERE /api/applications/apps`
+POST to `https://bw-kids-fly.herokuapp.com/api/apps`
 
 ```javascript
 {
-    email:
-    password:
+	"email": "Heather.Ridgill@gmail.com",
+	"password": "password"
 }
 ```
+
+Example Output:
+{
+    "message": "You have now applied to be a KidsFlyConnection Staff Member!"
+}
+
+
 

@@ -33,7 +33,7 @@ router.post(`/login/admin`, (req, res) => {
         if (admin && bcrypt.compareSync(password, admin.password)) {
 
             let token = genToken(admin);
-            res.status(200).json({ message: `Welcome ${admin.username}!`,
+            res.status(200).json({ message: `Welcome admin ${admin.username}!`,
         token: token
     });
         } else {
