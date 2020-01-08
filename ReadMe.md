@@ -9,14 +9,14 @@ Takes an object including:
 {
     "username": "LambdaStudent247",
     "password": "password",
-    "first name": "Heather",
-    "last name": "Ridgill",
-    "street address": "123 Lambda Court",
+    "first_name": "Heather",
+    "last_name": "Ridgill",
+    "street_address": "123 Lambda Court",
     "city": "LambdaVille",
     "state": "CA",
     "zip": "92831",
-    "phone number": "555-555-5555",
-    "home airport": "LAX"
+    "phone_number": "555-555-5555",
+    "home_airport": "LAX"
 }
 ```
 
@@ -26,14 +26,14 @@ Example Output:
     "id": 1,
     "username": "LambdaStudent247",
     "password": "$2a$10$6NrOGH/43.iC.t8gndaGV.N3ZNRnaaoln44K.urxOCsgmdwp67EeK",
-    "first name": "Heather",
-    "last name": "Ridgill",
-    "street address": "123 Lambda Court",
+    "first_name": "Heather",
+    "last_name": "Ridgill",
+    "street_address": "123 Lambda Court",
     "city": "LambdaVille",
     "state": "CA",
     "zip": "92831",
-    "phone number": "555-555-5555",
-    "home airport": "LAX",
+    "phone_number": "555-555-5555",
+    "home_airport": "LAX",
     "admin": 0
 }
 
@@ -129,11 +129,11 @@ Takes a JWT and an object including:
 
 ```javascript
 {
-"airport name": "SFO",
+"airport_name": "SFO",
 "airline": "1255",
-"flight number": "25",
-"departure time": "12PM",
-"carryon": "3",
+"flight_number": "25",
+"departure_time": "12PM",
+"carryon_items": "3",
 "children": "10"
 }
 ```
