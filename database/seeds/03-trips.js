@@ -2,11 +2,11 @@ exports.seed = function(knex) {
   return knex('users').insert([
     {"airport name": 'LAX'},
     {airline: 'Southwest'},
-    {"flight number": '1544'},
-    {"departure time": '2:30PM'},
-    {"carryon items": '5'},
+    {"flight_number": '1544'},
+    {"departure_time": '2:30PM'},
+    {"carryon_items": '5'},
     {children: '3'},
-    {"special needs": 'We have a stroller'},
+    {"special_needs": 'We have a stroller'},
 
   ]);
 };
