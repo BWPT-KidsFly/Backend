@@ -9,6 +9,7 @@ Takes an object including:
 {
     "username": "LambdaStudent247",
     "password": "password",
+    "confirm": "password",
     "first_name": "Heather",
     "last_name": "Ridgill",
     "street_address": "123 Lambda Court",
@@ -134,7 +135,9 @@ Takes a JWT and an object including:
 "flight_number": "25",
 "departure_time": "12PM",
 "carryon_items": "3",
-"children": "10"
+"checked_items": "1",
+"children": "10",
+"special_needs": "We have a stroller",
 }
 ```
 
@@ -161,7 +164,7 @@ Takes a JWT
 
 ### Get all trips items in database
 
-GET to `https://bw-kids-fly.herokuapp.com/api/trip/`
+GET to `https://bw-kids-fly.herokuapp.com/api/trips`
 
 
 Will be returned an array with trip objects.
