@@ -23,6 +23,11 @@ router.use (`/applications`, appRouter);
 
 router.use (`/apps`, authappsRouter);
 
+router.get ('/', (req, res) => {
+    res.status(200).json ({ message: `ITS WORKING`});
+}
+)
+
 
 
 module.exports = router;
