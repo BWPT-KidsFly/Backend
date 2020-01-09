@@ -10,6 +10,7 @@ const Users = require (`../users/user-model`);
 
 router.post(`/register/user`, (req, res) => {
     let user = req.body;
+    console.log(user)
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
     
