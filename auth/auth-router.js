@@ -17,8 +17,11 @@ router.post(`/register/user`, (req, res) => {
 
     Users.add(user)
     .then(saved => {
-        res.status(201).json(saved);
-    })
+
+        let token = genToken(saved);
+        res.status(201).json({saved,
+        token: token
+    })})
     .catch(error => {
         console.log(error)
         res.status(500).json(error);
@@ -35,7 +38,7 @@ router.post(`/login/user`, (req, res) => {
 
             let token = genToken(user);
             res.status(200).json({ message: `Welcome ${user.username}!`,
-        token: token
+        token: token, userid:user.id
     });
         } else {
             res.status(401).json({ message: `Invalid Credentials`});
