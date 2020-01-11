@@ -10,6 +10,7 @@ Takes an object including:
     "username": "LambdaStudent247",
     "password": "password",
     "confirm": "password",
+    "email": "Heather.Ridgill@gmail.com",
     "first_name": "Heather",
     "last_name": "Ridgill",
     "street_address": "123 Lambda Court",
@@ -24,18 +25,23 @@ Takes an object including:
 Example Output:
 
 {
-    "id": 1,
-    "username": "LambdaStudent247",
-    "password": "$2a$10$6NrOGH/43.iC.t8gndaGV.N3ZNRnaaoln44K.urxOCsgmdwp67EeK",
-    "first_name": "Heather",
-    "last_name": "Ridgill",
-    "street_address": "123 Lambda Court",
-    "city": "LambdaVille",
-    "state": "CA",
-    "zip": "92831",
-    "phone_number": "555-555-5555",
-    "home_airport": "LAX",
-    "admin": 0
+    "saved": {
+        "id": 1,
+        "username": "Heather",
+        "password": "$2a$10$YWS/2323oqZKgkcmJ7AeWe2Q7W1tZYokZLCSIiuAv6BmqvldmXWl.",
+        "confirm": "password",
+        "email": "Heather.Ridgill@gmail.com",
+        "first_name": "Heather",
+        "last_name": "Ridgill",
+        "street_address": "123 Lambda Court",
+        "city": "LambdaVille",
+        "state": "CA",
+        "zip": "92831",
+        "phone_number": "555-555-5555",
+        "home_airport": "LAX",
+        "admin": 0
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiSGVhdGhlciIsInJvbGVzIjoidXNlciIsImlhdCI6MTU3ODcyMTM3MCwiZXhwIjoxNTc4ODA3NzcwfQ.S-d9Ze18GIFhGFvG5fljIhiVHSbXCWx2WvUZv5mq_7s"
 }
 
 

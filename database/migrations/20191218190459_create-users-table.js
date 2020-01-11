@@ -6,6 +6,7 @@ exports.up = function(knex) {
       tbl.string('username', 255).notNullable();
         tbl.string('password', 255).notNullable();
         tbl.string('confirm', 255).notNullable();
+        tbl.string('email', 255).notNullable();
         tbl.string('first_name', 255).notNullable();
         tbl.string('last_name', 255).notNullable();
         tbl.string('street_address', 255).notNullable();
