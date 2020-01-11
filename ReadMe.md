@@ -10,7 +10,6 @@ Takes an object including:
     "username": "LambdaStudent247",
     "password": "password",
     "confirm": "password",
-    "email": "Heather.Ridgill@gmail.com",
     "first_name": "Heather",
     "last_name": "Ridgill",
     "street_address": "123 Lambda Court",
@@ -30,7 +29,6 @@ Example Output:
         "username": "Heather",
         "password": "$2a$10$YWS/2323oqZKgkcmJ7AeWe2Q7W1tZYokZLCSIiuAv6BmqvldmXWl.",
         "confirm": "password",
-        "email": "Heather.Ridgill@gmail.com",
         "first_name": "Heather",
         "last_name": "Ridgill",
         "street_address": "123 Lambda Court",
@@ -62,7 +60,8 @@ Example Output:
 
 {
     "message": "Welcome LambdaStudent247!",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiTGFtYmRhU3R1ZGVudDI0NyIsInJvbGVzIjoidXNlciIsImlhdCI6MTU3ODM3MTE5NCwiZXhwIjoxNTc4NDU3NTk0fQ.N1XJpSGk2n33FdnMGaLn4TGf-P2C8XS6II8G_KqyWJc"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiTGFtYmRhU3R1ZGVudDI0NyIsInJvbGVzIjoidXNlciIsImlhdCI6MTU3ODcyNTk4MSwiZXhwIjoxNTc4ODEyMzgxfQ.GSpNXMkeXbkyS2S0nF_oifInr5KFgvLV_bNoEs195IY",
+    "userid": 1
 }
 
 
