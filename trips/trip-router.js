@@ -4,8 +4,10 @@ const trips = require(`./trip-model`);
 
 const db = require(`../database/dbConfig`);
 
+const restricted = require(`../auth/auth-restricted-middleware`);
+
 //GET ALL TRIPS
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
     trips.find()
     .then(trips => {
       res.json(trips);

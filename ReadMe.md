@@ -197,11 +197,11 @@ POST to `https://bw-kids-fly.herokuapp.com/api/apps`
 
 ```javascript
 {
-	{email: 'LambdaStudent365@Lambda.edu'},
-    {password: 'password'},
-    {confirm: 'password'}
-    {first_name: 'Heather'},
-    {last_name: 'Ridgill'},
+	"email": "LambdaStudent365@Lambda.edu",
+    "password": "password",
+    "confirm": "password",
+    "first_name": "Heather",
+    "last_name": "Ridgill"
     
 }
 ```
